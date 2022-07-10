@@ -31,6 +31,12 @@ class Room(commands.Cog):
 
     @room.command()
     async def delete(self, ctx, channel_name):
-        channel = discord.utils.get(ctx.guild.channels, name=channel_name)
-        await channel.delete()
-        await ctx.send(f"Channel {channel_name} has been deleted")
+        channels = list(filter(lambda x:x.name == channel_name, ctx.guild.channels))
+
+        if len(channels) == 0:
+            await ctx.send(f"No channel found with the name {channel_name}")
+            return
+
+        for channel in channels:
+            await channel.delete()
+            await ctx.send(f"Channel {channel_name} has been deleted")
