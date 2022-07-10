@@ -11,3 +11,4 @@
 - [ ] created temp voice channel will be notified of deleting time when close to deletion
 - [ ] create multiple room with 1 command
 - [ ] create multiple temp room with 1 command with same time
+- [x] delete multiple room with same name
