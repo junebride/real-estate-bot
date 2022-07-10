@@ -16,11 +16,16 @@ class Room(commands.Cog):
         await ctx.send("Calling room")
 
     @room.command()
-    async def create_temp(self, ctx, channel_name, seconds=10):
-        category= ctx.channel.category
+    async def create(self, ctx, channel_name):
+        category= ctx.channel.category 
         
         await ctx.guild.create_text_channel(channel_name, category=category)
         await ctx.send(f"Channel {channel_name} has been created")
+
+
+    @room.command()
+    async def create_temp(self, ctx, channel_name, seconds=10):
+        await ctx.invoke(self.room.get_command("create"), channel_name=channel_name)
         await asyncio.sleep(seconds)
         await ctx.invoke(self.room.get_command("delete"), channel_name=channel_name)
 
