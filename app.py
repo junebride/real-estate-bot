@@ -1,7 +1,7 @@
 import os
 from discord.ext import commands
 from dotenv import load_dotenv
-from classroom import Classroom
+from room import Room
 
 load_dotenv()
 
@@ -13,5 +13,5 @@ bot = commands.Bot(command_prefix='!')
 async def stop(ctx):
     await bot.close()
 
-bot.add_cog(Classroom(bot))
+bot.add_cog(Room(bot))
 bot.run(TOKEN)
